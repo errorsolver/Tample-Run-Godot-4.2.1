@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci27o4fpuv11o"]
+
+[ext_resource type="PackedScene" uid="uid://bhfo07h6a0i5l" path="res://scene/player.tscn" id="1_2w8yr"]
+[ext_resource type="PackedScene" uid="uid://d1jomvw8or5uy" path="res://scene/terrain.tscn" id="2_tmayf"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_2w8yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+fall_acceleration = 4.5
+
+[node name="Marker3D" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Marker3D"]
+transform = Transform3D(-1, -5.69404e-08, -4.74125e-08, -6.72714e-08, 0.965926, 0.258819, 3.10597e-08, 0.258819, -0.965926, 1.74846e-07, 4, -4)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 20, 0)
+
+[node name="Terrain" parent="." instance=ExtResource("2_tmayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)

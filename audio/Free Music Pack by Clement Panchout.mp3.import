@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dd2kux7tls8l7"
+path="res://.godot/imported/Free Music Pack by Clement Panchout.mp3-aa40c4bfdcb3893364070002c5c0b5ca.mp3str"
+
+[deps]
+
+source_file="res://audio/Free Music Pack by Clement Panchout.mp3"
+dest_files=["res://.godot/imported/Free Music Pack by Clement Panchout.mp3-aa40c4bfdcb3893364070002c5c0b5ca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

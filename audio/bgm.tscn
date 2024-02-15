@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://mwgcwujxiuw8"]
+
+[ext_resource type="AudioStream" uid="uid://dd2kux7tls8l7" path="res://audio/Free Music Pack by Clement Panchout.mp3" id="1_30g2h"]
+
+[node name="Bgm" type="AudioStreamPlayer"]
+stream = ExtResource("1_30g2h")
+autoplay = true

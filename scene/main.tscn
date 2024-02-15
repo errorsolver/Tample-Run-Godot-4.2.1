@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci27o4fpuv11o"]
+
+[ext_resource type="PackedScene" uid="uid://bhfo07h6a0i5l" path="res://scene/player.tscn" id="1_2w8yr"]
+[ext_resource type="Script" path="res://script/main.gd" id="1_jd0et"]
+[ext_resource type="PackedScene" uid="uid://c36uxpg58v12e" path="res://scene/obstacle.tscn" id="2_nvg8y"]
+[ext_resource type="PackedScene" uid="uid://d1jomvw8or5uy" path="res://scene/terrain.tscn" id="2_tmayf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ycmh"]
+
+[sub_resource type="Curve3D" id="Curve3D_e2y7a"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5, 1, -42, 0, 0, 0, 0, 0, 0, 5, 1, -42, 0, 0, 0, 0, 0, 0, 5, 3, -42, 0, 0, 0, 0, 0, 0, -5, 3, -42, 0, 0, 0, 0, 0, 0, -5, 2, -42),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_jd0et")
+obstacle_scene = ExtResource("2_nvg8y")
+
+[node name="Player" parent="." instance=ExtResource("1_2w8yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 20, 0)
+
+[node name="Terrain" parent="." instance=ExtResource("2_tmayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+transform = Transform3D(-1, -3.58556e-08, -3.8679e-08, -5.03913e-08, 0.866025, 0.5, 1.55692e-08, 0.5, -0.866025, 1.74846e-07, 4, -4)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="Spawner" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 6, -45)
+mesh = SubResource("BoxMesh_5ycmh")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_e2y7a")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 1, -42)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
